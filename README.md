@@ -1,6 +1,5 @@
 # Consuming a separated CSS file in a Lit-Element TypeScript project - using rollup-plugin-lit-css
 
-- `git clone`
 - `npm i`
 - `npm run dev`
 
@@ -19,9 +18,9 @@ This project gives you a working example. There are a couple tricky issues to in
 - You might want to keep your TS file a little smaller
 - Some portion of your CSS might be maintained by a separate team
 
-Whatever the reason, thanks to [Benny Powers](https://bennypowers.com/) for creating this useful package! 
+Whatever the reason, thanks to [Benny Powers](https://bennypowers.com/) for creating this useful package, and also the good advice on why, and when, and when not to do this.
 
-## When would you not want to do this?
+## When would you _**not**_ want to do this?
 
 - Have you thought about the bloat issue? Bringing in a big fat bootstrap file, for example, might be a really dumb idea. This has nothing to do with Lit and everything to do with keeping your WC's light.
 - Not everything that works inside an html/css works inside a WC. For example `:root`
@@ -38,36 +37,38 @@ https://www.npmjs.com/package/rollup-plugin-lit-css
 
 ## package.json
 
-- "rollup-plugin-lit-css": "^2.0.1",
+- `"rollup-plugin-lit-css": "^2.0.1",`
 
 ## rollup config
 
-- import { litCssConfig } from './rollup.config.rest'
-- litcss( litCssConfig ),
+- `import { litCssConfig } from './rollup.config.rest'`
+- `litcss( litCssConfig ),`
 
 ## rollup.config.rest.js 
 
-- export const litCssConfig etc
+- `export const litCssConfig` etc
 - this is optional, if you just want the defaults
 
-## Lit-Element
+## Lit-Element component
 
-- import style from "../css/shared.css";
+- `import style from "../css/shared.css";`
 - mix in with your other css styles like so:
-- static get styles() etc
+- `static get styles()` etc
 
-## and the global.d.ts!
+## and the ....d.ts!
 
 `declare module '*.css' etc`
 
 ## Your mileage may vary:
+
+You'll probably have a different rollup config
 
 - Used a variation of our own setup which is consumes production code in a browsersync
 - Most shops probably use a es-dev-server?
 
 ## Combined with other stylesheet sources:
 
-You can combine stylesheets from different sources. Showed that here, even though it probably wouldn't be that great an idea to use this particular pattern in the way that it was used here.
+You can combine stylesheets from different sources. Showed that here to prove that it was possible, even though it probably wouldn't be that great an idea to use this particular pattern in the way that it was used here.
 
 ## Credits:
 
